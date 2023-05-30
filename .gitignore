@@ -1,18 +1,42 @@
-# Build and Release Folders
-bin-debug/
-bin-release/
-[Oo]bj/
-[Bb]in/
+using UnityEngine;
 
-# Other files and folders
-.settings/
+public class Balloon : MonoBehaviour
 
-# Executables
-*.swf
-*.air
-*.ipa
-*.apk
+{
 
-# Project files, i.e. `.project`, `.actionScriptProperties` and `.flexProperties`
-# should NOT be excluded as they contain compiler settings and other important
-# information for Eclipse / Flash Builder.
+    public float speed = 5f;
+
+    public float floatForce = 10f;
+
+    private Rigidbody2D rb;
+
+    void Start()
+
+    {
+
+        rb = GetComponent<Rigidbody2D>();
+
+    }
+
+    void Update()
+
+    {
+
+        // Move the balloon upwards
+
+        rb.velocity = new Vector2(0f, speed);
+
+        // Apply float force when tapping the screen
+
+        if (Input.GetMouseButtonDown(0))
+
+        {
+
+            rb.AddForce(new Vector2(0f, floatForce), ForceMode2D.Impulse);
+
+        }
+
+    }
+
+}
+
